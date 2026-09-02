@@ -1,0 +1,188 @@
+<!--
+   Names: Inshaal Siddiqui & Sophia Ansari
+   Course: COMPSCI 1XD3
+   Date Started: February 6, 2026
+   File: index.html
+   Description:
+   Main HTML structure for the Girl Garden incremental game.
+   Defines the click area, upgrade area, scoreboard, rewards,
+   help panel, and connects external CSS and JavaScript files.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Girl Garden</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="tooltip"></div>
+
+
+<div id="fruitsOnTree"></div>
+<img id="farmerSprite" src="images/farmer_upgrade.png" alt="Farmer" class="hidden">
+
+
+<div id="scoreboard">
+  <div class="scoreRow">Fruits Collected: <span id="scoreFruits">0</span></div>
+  <div class="scoreRow">Click Value: <span id="scoreClickValue">1</span></div>
+  <div class="scoreRow">Upgrades In Play: <span id="scoreUpgrades">0</span></div>
+  <div class="scoreRow">Auto-click: <span id="scoreAutoClick">Off</span></div>
+
+
+
+
+  <div id="progressLabel">Next fruit progress</div>
+  <div id="progressWrap">
+    <div id="progressBar"></div>
+  </div>
+</div>
+
+
+<div id="rightHud">
+  <div id="seedHud">
+    <div id="seedHudLabel"> Seeds Planted</div>
+
+
+
+
+    <div id="seedRow">
+      <img id="seedButton" src="images/seed.png" alt="Seed">
+      <div id="seedCount">0</div>
+    </div>
+
+
+    <button id="helpButton" type="button">Help</button>
+  </div>
+
+
+  <div id="helpPanel" class="hidden">
+    <h3>How to play</h3>
+    <p>Welcome to Girl Garden! Select the fruit you would like to grow and begin by clicking the seed to grow and collect your fruits.
+      Every 20 seeds clicked grows a fruit on the tree!</p>
+    <p>When your tree hits 5 fruits grown, it harvests into your basket.</p>
+    <p><b>Upgrades</b>: Buy upgrades using fruits in your basket. Prices increase each time.</p>
+    <p><b>Rewards</b>: Earn badges as you collect more fruits.</p>
+    <p> Happy Gardening!</p>
+  </div>
+
+
+  <div id="rewardsPanel">
+    <div class="rewardsTitle">Rewards</div>
+
+
+    <div class="badgeRow">
+      <img id="flowerBadge" class="badge locked" src="images/flower.png" alt="Flower Badge">
+      <div class="badgeText">10 fruits</div>
+    </div>
+
+
+    <div class="badgeRow">
+      <img id="bowBadge" class="badge locked" src="images/bow.png" alt="Bow Badge">
+      <div class="badgeText">25 fruits</div>
+    </div>
+
+
+    <div class="badgeRow">
+      <img id="crownBadge" class="badge locked" src="images/crown.png" alt="Crown Badge">
+      <div class="badgeText">50 fruits</div>
+    </div>
+
+
+
+
+    <div class="badgeRow">
+      <img id="heartsBadge" class="badge locked" src="images/hearts.png" alt="Hearts Badge">
+      <div class="badgeText">100 fruits</div>
+    </div>
+
+
+
+
+    <div class="badgeRow">
+      <img id="trophyBadge" class="badge locked" src="images/trophy.png" alt="Trophy Badge">
+      <div class="badgeText">200 fruits</div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<div id="toast" class="hidden"></div>
+
+
+<div id="fruitPicker">
+  <button class="fruitPick selected" data-fruit="strawberry.png">
+    <img src="images/strawberry.png" alt="Strawberry">
+  </button>
+  <button class="fruitPick" data-fruit="guava.png">
+    <img src="images/guava.png" alt="Guava">
+  </button>
+  <button class="fruitPick" data-fruit="raspberry.png">
+    <img src="images/raspberry.png" alt="Raspberry">
+  </button>
+  <button class="fruitPick" data-fruit="cherry.png">
+    <img src="images/cherry.png" alt="Cherry">
+  </button>
+  <button class="fruitPick" data-fruit="grapefruit.png">
+    <img src="images/grapefruit.png" alt="Grapefruit">
+  </button>
+</div>
+
+
+<div id="bottomPanel">
+  <div id="shelfContents">
+
+
+    <div id="basketSlot">
+      <img id="basketImage" src="images/basket.png" alt="Basket">
+      <div id="basketCount">0</div>
+    </div>
+
+
+    <button class="upgradeSlot" id="buyAutoclicker" type="button">
+      <img src="images/click_upgrade.png" alt="Autoclicker">
+      <div class="upgradePrice" id="price-autoclicker">5</div>
+    </button>
+
+
+    <button class="upgradeSlot" id="buyFarmers" type="button">
+      <img src="images/farmer_upgrade.png" alt="Farmers">
+      <div class="upgradePrice" id="price-farmers">10</div>
+    </button>
+
+
+    <button class="upgradeSlot" id="buyWater" type="button">
+      <img src="images/water_upgrade.png" alt="Water">
+      <div class="upgradePrice" id="price-water">15</div>
+    </button>
+
+
+    <button class="upgradeSlot" id="buyGloves" type="button">
+      <img src="images/glove_upgrade.png" alt="Gloves">
+      <div class="upgradePrice" id="price-gloves">20</div>
+    </button>
+
+
+    <button class="upgradeSlot" id="buyCharm" type="button">
+      <img src="images/clove_upgrade.png" alt="Clover">
+      <div class="upgradePrice" id="price-clover">50</div>
+    </button>
+
+
+
+
+  </div>
+</div>
+
+
+<script src="js/game.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

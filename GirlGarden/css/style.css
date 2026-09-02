@@ -1,0 +1,445 @@
+/*
+   Names: Inshaal Siddiqui & Sophia Ansari
+   Course: COMPSCI 1XD3
+   Date Started: February 6, 2026
+   File: style.css
+   Description:
+   Styling for the Girl Garden incremental game.
+   Handles layout, glass effects, buttons, progress bar,
+   rewards display, toast notifications, and help panel styling.
+*/
+:root{
+--pinkGlass: rgba(255, 105, 180, 0.22);
+--pinkGlassDark: rgba(255, 105, 180, 0.30);
+--glassBorder: rgba(255,255,255,0.25);
+}
+
+
+html, body {
+margin: 0;
+height: 100%;
+}
+
+
+body {
+background: url("../images/garden.png") center / cover no-repeat;
+font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+position: relative;
+overflow-x: hidden;
+}
+
+
+body * {
+outline: none;
+}
+
+
+#tooltip{
+position: absolute;
+pointer-events: none;
+padding: 6px 10px;
+background: rgba(0,0,0,0.8);
+color: white;
+border-radius: 8px;
+font-size: 14px;
+display: none;
+z-index: 2000;
+}
+
+
+#fruitsOnTree {
+position: relative;
+width: 100%;
+height: 800px;
+pointer-events: none;
+z-index: 2;
+}
+
+
+.fruit {
+position: absolute;
+width: 150px;
+height: auto;
+z-index: 3;
+}
+
+
+#rightHud{
+position: fixed;
+top: 18px;
+right: 18px;
+z-index: 1300;
+width: 280px;
+max-height: calc(100vh - 30px);
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+
+#seedHud{
+background: var(--pinkGlass);
+border: 1px solid var(--glassBorder);
+backdrop-filter: blur(8px);
+border-radius: 18px;
+padding: 14px;
+text-align: center;
+color: white;
+}
+
+
+#seedHudLabel{
+font-size: 14px;
+font-weight: bold;
+}
+
+
+#seedRow{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 16px;
+margin-top: 8px;
+}
+
+
+#seedButton{
+width: 90px;
+cursor: pointer;
+transition: transform 0.1s ease;
+}
+
+
+#seedButton:active{
+transform: scale(1.15);
+}
+
+
+#seedCount{
+min-width: 60px;
+font-size: 32px;
+font-weight: bold;
+text-align: center;
+}
+
+
+#helpButton{
+margin-top: 12px;
+padding: 8px 14px;
+border-radius: 12px;
+border: none;
+cursor: pointer;
+font-weight: bold;
+}
+
+
+#helpPanel{
+background: var(--pinkGlassDark);
+border: 1px solid var(--glassBorder);
+backdrop-filter: blur(8px);
+border-radius: 18px;
+padding: 14px;
+color: white;
+}
+
+
+.hidden{
+display: none;
+}
+
+
+#farmerSprite{
+position: absolute;
+left: 260px;
+top: 420px;
+width: 120px;
+z-index: 5;
+pointer-events: none;
+}
+
+
+#rewardsPanel{
+background: var(--pinkGlass);
+border: 1px solid var(--glassBorder);
+backdrop-filter: blur(8px);
+border-radius: 18px;
+padding: 12px;
+overflow: auto;
+max-height: 42vh;
+}
+
+
+.rewardsTitle{
+font-weight: bold;
+margin-bottom: 10px;
+color: white;
+}
+
+
+.badgeRow{
+display:flex;
+align-items:center;
+gap: 10px;
+padding: 8px 6px;
+border-radius: 12px;
+}
+
+
+.badge{
+width: 52px;
+height: auto;
+}
+
+
+.badgeText{
+font-size: 14px;
+font-weight: bold;
+color: white;
+}
+
+
+.badge.locked{
+opacity: 0.25;
+filter: grayscale(100%);
+}
+
+
+#scoreboard {
+position: fixed;
+top: 90px;
+left: 62%;
+transform: translateX(-50%);
+z-index: 1100;
+width: 260px;
+padding: 10px 12px;
+background: var(--pinkGlass);
+border: 1px solid var(--glassBorder);
+backdrop-filter: blur(8px);
+border-radius: 14px;
+color: white;
+font-size: 14px;
+}
+
+
+.scoreRow{
+display:flex;
+justify-content: space-between;
+margin: 6px 0;
+}
+
+
+#progressLabel{
+margin-top: 10px;
+font-size: 12px;
+opacity: 0.9;
+}
+
+
+#progressWrap{
+height: 10px;
+background: rgba(255,255,255,0.25);
+border-radius: 999px;
+overflow: hidden;
+}
+
+
+#progressBar{
+height: 100%;
+width: 0%;
+background: rgba(223, 172, 30, 0.9);
+}
+
+
+#fruitPicker {
+position: fixed;
+bottom: 170px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 12px;
+z-index: 1000;
+}
+
+
+.fruitPick{
+border: none;
+background: rgba(18, 79, 42, 0.79);
+border-radius: 10px;
+padding: 6px;
+cursor: pointer;
+}
+
+
+.fruitPick img{
+width: 60px;
+}
+
+
+.fruitPick.selected{
+background: rgba(223, 172, 30, 0.74);
+}
+
+
+#bottomPanel{
+position: fixed;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: min(900px, 95vw);
+padding: 14px 0;
+z-index: 1000;
+}
+
+
+#shelfContents{
+width: 100%;
+display:flex;
+justify-content:center;
+align-items:center;
+gap: 30px;
+
+
+background: var(--pinkGlass);
+border: 1px solid var(--glassBorder);
+backdrop-filter: blur(8px);
+border-radius: 22px;
+padding: 18px 20px;
+}
+
+
+#basketSlot{
+position: relative;
+display:flex;
+align-items:flex-end;
+}
+
+
+#basketImage{
+width: 160px;
+}
+
+
+#basketCount{
+position:absolute;
+bottom: 22px;
+left: 50%;
+transform: translateX(-50%);
+font-size: 18px;
+font-weight: bold;
+color: rgb(197, 122, 184);
+text-shadow: 1px 1px 2px rgba(172, 78, 161, 0.7);
+}
+
+
+.upgradeSlot{
+width: 100px;
+height: 100px;
+background: transparent;
+border: none;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+}
+
+
+.upgradeSlot img{
+width: 95px;
+}
+
+
+.upgradePrice{
+margin-top: 4px;
+font-size: 14px;
+font-weight: bold;
+color: rgb(223, 172, 30);
+text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+
+.upgradeSlot.disabled,
+.upgradeSlot:disabled{
+opacity: 0.35;
+filter: grayscale(100%);
+pointer-events:none;
+}
+
+
+
+
+
+
+
+
+#toast{
+position: fixed;
+top: 18px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 3000;
+padding: 10px 14px;
+border-radius: 12px;
+background: rgba(0,0,0,0.85);
+color: white;
+font-weight:bold;
+}
+
+
+@media (max-width: 900px){
+
+
+#scoreboard{
+  top: 10px;
+  left: 50%;
+  width: 240px;
+}
+
+
+#rightHud{
+  right: 10px;
+  top: 10px;
+  width: 240px;
+}
+
+
+#seedButton{
+  width: 70px;
+}
+
+
+#seedCount{
+  font-size: 28px;
+}
+
+
+#fruitPicker{
+  bottom: 165px;
+  flex-wrap: wrap;
+  width: 95vw;
+  justify-content: center;
+}
+
+
+#shelfContents{
+  gap: 14px;
+  padding: 14px 12px;
+}
+
+
+#basketImage{
+  width: 130px;
+}
+
+
+.upgradeSlot img{
+  width: 80px;
+}
+}
+
+
+
+
+
+
+

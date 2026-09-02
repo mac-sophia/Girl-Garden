@@ -1,5 +1,5 @@
 /**
-* Names: Inshaal Siddiqui & Sophia Ansari
+* Names: Sophia Ansari & Group
 * Course: COMPSCI 1XD3
 * Date Started: February 6, 2026
 * File: game.js
